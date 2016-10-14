@@ -1,0 +1,22 @@
+[
+  {
+    "NewsId": 1,
+    "Text": "Sample news item A",
+    "PublishedDate": "2016-03-19T00:00:00"
+  },
+  {
+    "NewsId": 2,
+    "Text": "Sample news item B",
+    "PublishedDate": "2017-03-19T00:00:00"
+  },
+  {
+    "NewsId": 3,
+    "Text": "Sample news item C",
+    "PublishedDate": "2016-04-19T00:00:00"
+  },
+  {
+    "NewsId": 4,
+    "Text": "Sample news item D",
+    "PublishedDate": "2016-08-19T00:00:00"
+  }
+]

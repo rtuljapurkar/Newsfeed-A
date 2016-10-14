@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Newsfeed</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-resource.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls-0.11.0.js"></script>
+
+    <!-- Services -->
+    <script src="common/common.service.js"></script>
+    <script src="common/newsResource.js"></script>
+
+    <!-- Modules -->
+    <script src="app/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="app/Newsfeed/NewsfeedCtrl.js"></script>
+</head>
+<body ng-app="NewsfeedMgmt" ng-controller="NewsfeedCtrl as vm">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"
+                            data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar navbar-collapse">
+                    <ul class="nav navbar-nav">
+                    </ul>
+                </div>
+               
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div ng-include="'app/Newsfeed/NewsfeedListView.html'"></div>
+    </div>
+  
+
+</body>
+</html>

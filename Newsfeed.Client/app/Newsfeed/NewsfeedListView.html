@@ -1,0 +1,115 @@
+﻿<div class="panel panel-primary" ng-controller="NewsfeedCtrl as vm">
+
+    <div class="panel panel-heading" style="font-size: large">
+        Your News
+    </div>
+    <div ng-show="vm.isBusy" class="text-center "><i class="glyphicon glyphicon-spin"></i><b> Loading...</b></div>
+    <div class="panel-body">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <td><b>News</b></td>
+                <td><b>Date Published</b></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="news in vm.newsfeed">
+                <td>{{ news.text }}</td>
+                <td>{{ news.publishedDate | date }}</td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="panel panel-heading" style="font-size: large">
+        Add New Entry
+    </div>
+    <div>
+        <form class="form-horizontal"
+              name="newsForm"
+              novalidate>
+            <fieldset>
+                <div class="form-group"
+                     ng-class="{'has-error':newsForm.inputNewsText.$invalid &&
+                                    newsForm.inputNewsText.$dirty}">
+                    <label class="col-md-2 control-label"
+                           for="inputNewsText">News Text</label>
+
+                    <div class="col-md-4">
+                        <input class="form-control"
+                               id="inputNewsText"
+                               name="inputNewsText"
+                               type="text"
+                               placeholder="News Text (required)"
+                               ng-model="vm.newItem.text"
+                               required
+                               ng-minlength="5"
+                               ng-maxlength="20" />
+                    </div>
+                    <span class="help-block has-error">
+                        <span ng-show="newsForm.inputNewsText.$error.required">
+                            News Text is required.
+                        </span>
+                        <span ng-show="newsForm.inputNewsText.$error.minlength">
+                            News Text must be at least 4 characters in length.
+                        </span>
+                        <span ng-show="newsForm.inputNewsText.$error.maxlength">
+                            News Text cannot exceed 12 characters in length.
+                        </span>
+                    </span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-md-2 control-label"
+                           for="inputPublishedDate">Date Published</label>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input class="form-control"
+                                   id="inputPublishedDate"
+                                   type="text"
+                                   datepicker-popup="MMM dd, yyyy "
+                                   is-open="vm.opened"
+                                   placeholder="News Date (required)"
+                                   ng-model="vm.newItem.publishedDate" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="vm.open($event)">
+                                    <i class="glyphicon glyphicon-calendar" />
+                                </button>
+                            </span>
+                        </div>
+                     </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4 col-md-offset-2">
+                        <span>
+                            <button class="btn btn-primary"
+                                    style="width: 80px; margin-right: 10px"
+                                    ng-click="vm.submit()"
+                                    ng-disabled="newsForm.$invalid">
+                                Save
+                            </button>
+                        </span>
+                        <span>
+                            <button class="btn btn-default"
+                                    style="width: 70px"
+                                    ng-click="vm.cancel(newsForm)">
+                                Cancel
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="form-group"
+                     ng-show="vm.message">
+                    <div class="col-md-6">
+                        <pre style="font: inherit">{{vm.message }}</pre>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
